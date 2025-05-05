@@ -10,13 +10,14 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     pkg_name = 'my_robot'  # Replace with your package name
+    description_folder_name = 'description'
     urdf_file = 'robot.urdf.xacro'  # Replace with your URDF or XACRO filename
 
-    urdf_path = os.path.join(
-        get_package_share_directory(pkg_name),
-        'description',
-        urdf_file
-    )
+    # urdf_path = os.path.join(
+    #     get_package_share_directory(pkg_name),
+    #     'description',
+    #     urdf_file
+    # )
 
     return LaunchDescription([
         # Convert xacro to URDF and publish TFs
@@ -30,8 +31,9 @@ def generate_launch_description():
                     Command([
                         'xacro ',
                         PathJoinSubstitution([
-                            FindPackageShare('my_robot'),
-                            'robot.urdf.xacro'
+                            FindPackageShare(pkg_name),
+                            description_folder_name,
+                            urdf_file
                         ])
                     ]),
                     value_type=str
