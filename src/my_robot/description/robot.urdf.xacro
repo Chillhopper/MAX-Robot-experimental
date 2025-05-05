@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="my_robot">
+  <!-- include the chassis -->
+  <xacro:include filename="chassis.urdf.xacro"/>
+  <xacro:chassis/>
+
+  <!-- define a root base_link -->
+  <link name="base_link"/>
+
+  <!-- fixed joint to attach chassis -->
+  <joint name="base_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="baselink"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>
