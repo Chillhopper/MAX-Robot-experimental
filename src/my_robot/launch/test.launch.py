@@ -7,17 +7,61 @@ from launch_ros.actions import Node
 from launch.substitutions import Command, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.parameter_descriptions import ParameterValue
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     pkg_name = 'my_robot'  # Replace with your package name
     description_folder_name = 'description'
     urdf_file = 'robot.urdf.xacro'  # Replace with your URDF or XACRO filename
 
-    # urdf_path = os.path.join(
-    #     get_package_share_directory(pkg_name),
-    #     'description',
-    #     urdf_file
+    #---------------------GAZEBO CLASSIC
+
+    gazebo_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            PathJoinSubstitution([
+                FindPackageShare('gazebo_ros'),
+                'launch',
+                'gazebo.launch.py'
+            ])
+        ]),
+        launch_arguments={'pause': 'true'}.items()
+    )
+
+    spawn_entity = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=[
+            '-topic', 'robot_description',
+            '-entity', 'my_robot',
+            '-x', '0', '-y', '0', '-z', '0.1'  # Small z offset avoids clipping through ground
+        ],
+        output='screen'
+    )
+
+    #---------------------GAZEBO IGNITION
+
+    # gazebo_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource([
+    #         PathJoinSubstitution([
+    #             FindPackageShare('ros_ign_gazebo'),
+    #             'launch',
+    #             'ign_gazebo.launch.py'
+    #         ])
+    #     ]),
+    #     launch_arguments={'ign_args': '-r -v 4 empty.sdf'}.items()
     # )
+
+    # spawn_entity = ExecuteProcess(
+    #     cmd=[
+    #         'ros2', 'run', 'ros_ign_gazebo', 'create',
+    #         '-name', 'my_robot',
+    #         '-topic', 'robot_description'
+    #     ],
+    #     output='screen'
+    # )
+
+
 
     return LaunchDescription([
         # Convert xacro to URDF and publish TFs
@@ -60,6 +104,11 @@ def generate_launch_description():
                 'config',
                 'rviz.rviz'  # Replace with your RViz config or remove if not using
             )]
-        )
+        ),
+
+        gazebo_launch, spawn_entity
+
+
+
     ])
 

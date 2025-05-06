@@ -16,6 +16,7 @@
   joint_name="right_wheel_joint"
   parent_link="base_link"
   xyz_pos="0.078 -0.22 -0.2"/>
+
   <!-- <xacro:drive_wheel/> -->
 
   <!-- define a root base_link -->
