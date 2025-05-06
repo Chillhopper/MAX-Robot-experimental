@@ -57,8 +57,8 @@ def generate_launch_description():
             output='screen',
             arguments=['-d', os.path.join(
                 get_package_share_directory(pkg_name),
-                'rviz',
-                'view_robot.rviz'  # Replace with your RViz config or remove if not using
+                'config',
+                'rviz.rviz'  # Replace with your RViz config or remove if not using
             )]
         )
     ])

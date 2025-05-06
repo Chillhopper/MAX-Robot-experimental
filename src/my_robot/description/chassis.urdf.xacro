@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chassis">
 
   <xacro:macro name="chassis" params="">
-    <link name="baselink">
+    <link name="base_link">
       <inertial>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <mass value="0.0"/>

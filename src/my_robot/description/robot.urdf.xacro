@@ -2,15 +2,31 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
   <!-- include the chassis -->
   <xacro:include filename="chassis.urdf.xacro"/>
+  <xacro:include filename="drive_wheel.urdf.xacro"/>
+
   <xacro:chassis/>
+  <xacro:drive_wheel
+  wheel_name="left_wheel_link"
+  joint_name="left_wheel_joint"
+  parent_link="base_link"
+  xyz_pos="0.078 0.22 -0.2"/>
+
+<xacro:drive_wheel
+  wheel_name="right_wheel_link"
+  joint_name="right_wheel_joint"
+  parent_link="base_link"
+  xyz_pos="0.078 -0.22 -0.2"/>
+  <!-- <xacro:drive_wheel/> -->
 
   <!-- define a root base_link -->
-  <link name="base_link"/>
+  <link name="map"/>
 
   <!-- fixed joint to attach chassis -->
   <joint name="base_to_chassis" type="fixed">
-    <parent link="base_link"/>
-    <child link="baselink"/>
+    <parent link="map"/>
+    <child link="base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
+
+
 </robot>
