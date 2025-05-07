@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       xmlns:xi="http://www.w3.org/2001/XInclude"
+       name="my_robot">
+
+  <!-- Load robot physical structure -->
+  <xacro:include filename="robot.urdf.xacro"/>
+  <xacro:include filename="control.urdf.xacro"/>
+
+  <!-- Optionally include ros2_control or sensor macros later -->
+  <!-- <xacro:include filename="ros2_control.xacro"/> -->
+
+  <!-- Call robot construction macro -->
+  <xacro:robot/>
+
+</robot>
