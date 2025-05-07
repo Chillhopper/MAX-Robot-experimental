@@ -5,7 +5,7 @@
 
   <!-- Load robot physical structure -->
   <xacro:include filename="robot.urdf.xacro"/>
-  <xacro:include filename="control.urdf.xacro"/>
+  <xacro:include filename="gazebo_control.xacro"/>
 
   <!-- Optionally include ros2_control or sensor macros later -->
   <!-- <xacro:include filename="ros2_control.xacro"/> -->
