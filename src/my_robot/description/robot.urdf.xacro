@@ -4,21 +4,35 @@
   <!-- include the chassis -->
   <xacro:include filename="chassis.urdf.xacro"/>
   <xacro:include filename="drive_wheel.urdf.xacro"/>
+  <xacro:include filename="castor_wheel.urdf.xacro"/>
+  <xacro:include filename="robot_cover.urdf.xacro"/>
 
   <xacro:chassis/>
+
+  <!-- <xacro:drive_wheel/> -->
   <xacro:drive_wheel
   wheel_name="left_wheel_link"
   joint_name="left_wheel_joint"
   parent_link="base_link"
   xyz_pos="0.078 0.22 -0.2"/>
 
-<xacro:drive_wheel
+  <xacro:drive_wheel
   wheel_name="right_wheel_link"
   joint_name="right_wheel_joint"
   parent_link="base_link"
   xyz_pos="0.078 -0.22 -0.2"/>
 
-  <!-- <xacro:drive_wheel/> -->
+  <!-- <xacro:castor_wheel/> -->
+  <xacro:castor_wheel
+  xyz_pos="-0.2 0 -0.225"/>
+
+
+
+
+
+  <!-- <xacro:robot_cover/> -->
+  <xacro:robot_cover
+  xyz_pos="-0.06 0.0 0.05"/>s
 
   <!-- define a root base_link -->
   <link name="map"/>

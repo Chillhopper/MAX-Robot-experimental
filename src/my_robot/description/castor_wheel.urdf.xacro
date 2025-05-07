@@ -1,15 +1,21 @@
 <?xml version="1.0" ?>
-<robot name="castor_wheel.urdf">
-  <link name="baselink">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor_wheel">
+
+  <xacro:macro name="castor_wheel" params="xyz_pos">
+
+  <xacro:property name="parent_link" value="base_link"/>
+  <xacro:property name="child_link"  value="castor_wheel"/>
+
+  <link name="castor_wheel">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-       <mass value="0.0"/>
-       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+       <mass value="1.0"/>
+       <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0" izz="0.01"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="castor_wheel.obj" scale="1.0 1.0 1.0"/>
+        <mesh filename="file://$(find my_robot)/description/castor_wheel.obj" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white">
        <color rgba="1 1 1 1"/>
@@ -18,11 +24,20 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="castor_wheel.obj" scale="1.0 1.0 1.0"/>
+        <mesh filename="file://$(find my_robot)/description/castor_wheel.obj" scale="1.0 1.0 1.0"/>
         <!-- you could also specify the collision (for the castor_wheel) with a "box" tag: -->
         <!-- <box size=".06 .06 .06"/> -->
       </geometry>
     </collision>
   </link>
+
+
+  <joint name="castor_wheel_joint" type="fixed">
+    <parent link="${parent_link}"/>
+    <child link="${child_link}"/>
+    <origin xyz="${xyz_pos}" rpy="0 0 0 "/>
+  </joint>
+
+  </xacro:macro>
 </robot>
         

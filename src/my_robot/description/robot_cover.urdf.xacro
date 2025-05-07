@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
-<robot name="robot_cover.urdf">
-  <link name="baselink">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_cover.urdf">
+
+<xacro:macro name="robot_cover" params="xyz_pos">
+  <link name="robot_cover">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
        <mass value="0.0"/>
@@ -9,7 +11,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="robot_cover.obj" scale="1.0 1.0 1.0"/>
+        <mesh filename="file://$(find my_robot)/description/robot_cover.obj" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="white">
        <color rgba="1 1 1 1"/>
@@ -18,11 +20,20 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="robot_cover.obj" scale="1.0 1.0 1.0"/>
+        <mesh filename="file://$(find my_robot)/description/robot_cover.obj" scale="1.0 1.0 1.0"/>
         <!-- you could also specify the collision (for the robot_cover) with a "box" tag: -->
         <!-- <box size=".06 .06 .06"/> -->
       </geometry>
     </collision>
   </link>
+
+  <joint name="robot_cover_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="robot_cover"/>
+    <origin xyz="${xyz_pos}" rpy="0 0 0 "/>
+  </joint>
+
+
+  </xacro:macro>
 </robot>
         
