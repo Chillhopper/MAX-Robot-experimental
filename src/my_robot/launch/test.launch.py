@@ -71,6 +71,7 @@ def generate_launch_description():
             name='robot_state_publisher',
             output='screen',
             parameters=[{
+                'use_sim_time': True,
                 'robot_description': ParameterValue(
                     Command([
                         'xacro ',
@@ -90,7 +91,8 @@ def generate_launch_description():
             package='joint_state_publisher_gui',
             executable='joint_state_publisher_gui',
             name='joint_state_publisher_gui',
-            output='screen'
+            output='screen',
+            parameters=[{'use_sim_time' : True}]
         ),
 
         # Start RViz2 with a blank config or your own .rviz config file
@@ -99,10 +101,11 @@ def generate_launch_description():
             executable='rviz2',
             name='rviz2',
             output='screen',
+            parameters=[{'use_sim_time' : True}],
             arguments=['-d', os.path.join(
                 get_package_share_directory(pkg_name),
                 'config',
-                'rviz.rviz'  # Replace with your RViz config or remove if not using
+                'rviz_odom.rviz'  # Replace with your RViz config or remove if not using
             )]
         ),
 

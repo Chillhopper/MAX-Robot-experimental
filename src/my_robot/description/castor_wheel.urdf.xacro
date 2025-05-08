@@ -32,6 +32,24 @@
   </link>
 
 
+  <gazebo reference="castor_wheel">
+    <!-- <material>Gazebo/White</material> -->
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.0</mu>
+            <mu2>0.0</mu2>
+          </ode>
+        </friction>
+        <bounce/>
+        <contact>
+          <ode/>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
   <joint name="castor_wheel_joint" type="fixed">
     <parent link="${parent_link}"/>
     <child link="${child_link}"/>

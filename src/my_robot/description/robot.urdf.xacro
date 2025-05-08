@@ -10,39 +10,45 @@
   <xacro:chassis/>
 
   <!-- <xacro:drive_wheel/> -->
+
+
   <xacro:drive_wheel
   wheel_name="left_wheel_link"
   joint_name="left_wheel_joint"
   parent_link="base_link"
-  xyz_pos="0.078 0.22 -0.2"/>
+  xyz_pos="-0.076 0.22 -0.2"
+  wheel_flipping="0"/>
+
+  <!-- <xacro:drive_wheel -->
+
+
 
   <xacro:drive_wheel
   wheel_name="right_wheel_link"
   joint_name="right_wheel_joint"
   parent_link="base_link"
-  xyz_pos="0.078 -0.22 -0.2"/>
+  xyz_pos="-0.076 -0.22 -0.2"
+  wheel_flipping="3.1415"/>
 
   <!-- <xacro:castor_wheel/> -->
+
   <xacro:castor_wheel
-  xyz_pos="-0.2 0 -0.225"/>
-
-
-
+  xyz_pos="0.2 0 -0.228"/> 
 
 
   <!-- <xacro:robot_cover/> -->
   <xacro:robot_cover
-  xyz_pos="-0.06 0.0 0.05"/>s
+  xyz_pos="0.06 0.0 0.05"/>
 
-  <!-- define a root base_link -->
-  <link name="map"/>
 
-  <!-- fixed joint to attach chassis -->
+
+    <!-- <link name="map"/>
+
   <joint name="base_to_chassis" type="fixed">
     <parent link="map"/>
     <child link="base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
+  </joint> -->
 
 </xacro:macro>
 </robot>

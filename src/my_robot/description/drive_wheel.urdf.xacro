@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="drive_wheel.urdf">
 
-  <xacro:macro name="drive_wheel" params="wheel_name joint_name parent_link xyz_pos">
+  <xacro:macro name="drive_wheel" params="wheel_name joint_name parent_link xyz_pos wheel_flipping">
 
   <link name="${wheel_name}">
     <inertial>
@@ -10,7 +10,7 @@
        <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 ${wheel_flipping}" xyz="0 0 0"/>
       <geometry>
         <!-- <mesh filename="package://my_robot/description/drive_wheel.obj" scale="1.0 1.0 1.0"/> -->
         <mesh filename="file://$(find my_robot)/description/drive_wheel.obj"/>
