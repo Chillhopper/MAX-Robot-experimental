@@ -105,7 +105,7 @@ def generate_launch_description():
             arguments=['-d', os.path.join(
                 get_package_share_directory(pkg_name),
                 'config',
-                'rviz_odom.rviz'  # Replace with your RViz config or remove if not using
+                'rviz_lidar.rviz'  # Replace with your RViz config or remove if not using
             )]
         ),
 
