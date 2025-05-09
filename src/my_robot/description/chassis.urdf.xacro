@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chassis">
 
+  <xacro:property name="mesh_path_chassis" value="file://$(find my_robot)/mesh/chassis.obj"/>
+
   <xacro:macro name="chassis" params="">
     <link name="base_link">
       <inertial>
@@ -13,7 +15,8 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
           <!-- <mesh filename="package://my_robot/description/chassis.obj" scale="1.0 1.0 1.0"/> -->
-          <mesh filename="file://$(find my_robot)/description/chassis.obj"/>
+          <!-- <mesh filename="file://$(find my_robot)/description/chassis.obj"/> -->
+          <mesh filename="${mesh_path_chassis}"/>
         </geometry>
         <material name="white">
           <color rgba="1 1 1 1"/>
@@ -24,7 +27,8 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
           <!-- <mesh filename="package://my_robot/description/chassis.obj" scale="1.0 1.0 1.0"/> -->
-          <mesh filename="file://$(find my_robot)/description/chassis.obj"/>
+          <!-- <mesh filename="file://$(find my_robot)/description/chassis.obj"/> -->
+          <mesh filename="${mesh_path_chassis}"/>
         </geometry>
       </collision>
     </link>

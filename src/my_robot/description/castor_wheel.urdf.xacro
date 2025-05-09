@@ -5,6 +5,7 @@
 
   <xacro:property name="parent_link" value="base_link"/>
   <xacro:property name="child_link"  value="castor_wheel"/>
+  <xacro:property name="mesh_path_castor_wheel" value="file://$(find my_robot)/mesh/castor_wheel.obj"/>
 
   <link name="castor_wheel">
     <inertial>
@@ -15,7 +16,8 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find my_robot)/description/castor_wheel.obj" scale="1.0 1.0 1.0"/>
+        <!-- <mesh filename="file://$(find my_robot)/description/castor_wheel.obj" scale="1.0 1.0 1.0"/> -->
+        <mesh filename="${mesh_path_castor_wheel}"/>
       </geometry>
       <material name="white">
        <color rgba="1 1 1 1"/>
@@ -24,7 +26,8 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find my_robot)/description/castor_wheel.obj" scale="1.0 1.0 1.0"/>
+        <mesh filename="${mesh_path_castor_wheel}"/>
+        <!-- <mesh filename="file://$(find my_robot)/description/castor_wheel.obj" scale="1.0 1.0 1.0"/> -->
         <!-- you could also specify the collision (for the castor_wheel) with a "box" tag: -->
         <!-- <box size=".06 .06 .06"/> -->
       </geometry>
