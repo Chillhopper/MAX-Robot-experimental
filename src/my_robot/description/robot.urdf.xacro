@@ -6,6 +6,8 @@
   <xacro:include filename="drive_wheel.urdf.xacro"/>
   <xacro:include filename="castor_wheel.urdf.xacro"/>
   <xacro:include filename="robot_cover.urdf.xacro"/>
+  <xacro:include filename="inertial_macros.xacro"/>
+  <xacro:include filename="lidar.xacro" />
 
   <xacro:chassis/>
 
@@ -40,7 +42,13 @@
   <xacro:robot_cover
   xyz_pos="0.06 0.0 0.05"/>
 
+  <!-- lidar stuffs --> 
+  <!-- <xacro:inertial_sphere/>
+  <xacro:inertial_box/>
+  <xacro:inertial_cylinder/> -->
 
+  <xacro:lidar
+  xyz_pos="0.35 0 -0.1"/>
 
     <!-- <link name="map"/>
 
